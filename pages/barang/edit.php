@@ -125,7 +125,7 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
 
                 <div class="col-12 mt-4 pt-3 border-top">
                     <div class="d-flex justify-content-end gap-2">
-                        <button type="submit" name="simpan" class="btn btn-primary px-5 shadow-sm">
+                        <button type="submit" name="update" class="btn btn-primary px-5 shadow-sm">
                             <i class="fas fa-save me-2"></i> Simpan Barang
                         </button>
                     </div>
