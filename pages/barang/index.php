@@ -6,8 +6,7 @@ $sql = "SELECT barang.*, kategori.nama_kategori, satuan.nama_satuan
         FROM barang 
         LEFT JOIN kategori ON barang.id_kategori = kategori.id 
         LEFT JOIN satuan ON barang.id_satuan = satuan.id
-        ORDER BY barang.tanggal_masuk DESC, barang.nama_barang ASC";
-
+        ORDER BY barang.kode_barang ASC";
 try {
     $stmt = $pdo->query($sql);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
