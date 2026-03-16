@@ -12,31 +12,24 @@ if ($last_kode) {
 
 $kategori = $pdo->query("SELECT * FROM kategori ORDER BY nama_kategori")->fetchAll();
 $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
+
+include '../../includes/header.php'; 
 ?>
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Barang - Inventaris</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
-<body>
-
-<div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h2 class="fw-bold text-dark mb-1">Tambah Barang</h2>
-            <p class="text-muted small mb-0">Lengkapi form di bawah untuk menambah stok barang baru.</p>
-        </div>
-        <a href="index.php" class="btn btn-outline-pink shadow-sm">
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-1" style="color: #000000;">Tambah Barang</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Data Barang</a></li>
+                <li class="breadcrumb-item active">Tambah</li>
+            </ol>
+        </nav>
+    </div>
+    <a href="index.php" class="btn btn-outline-pink shadow-sm">
             <i class="fas fa-arrow-left me-2"></i> Kembali
         </a>
-    </div>
+</div>
 
     <div class="card card-custom border-0 shadow-sm">
         <div class="card-header bg-white py-3 border-bottom">
@@ -154,5 +147,4 @@ function previewImage(input) {
 }
 </script>
 
-</body>
-</html>
+<?php include '../../includes/footer.php'; ?>

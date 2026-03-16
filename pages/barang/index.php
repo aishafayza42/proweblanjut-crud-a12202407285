@@ -1,12 +1,12 @@
 <?php 
 include '../../config/koneksi.php';
+include '../../includes/header.php'; 
 
-// Query diperbarui untuk mengambil kolom tanggal_masuk
 $sql = "SELECT barang.*, kategori.nama_kategori, satuan.nama_satuan 
         FROM barang 
         LEFT JOIN kategori ON barang.id_kategori = kategori.id 
         LEFT JOIN satuan ON barang.id_satuan = satuan.id
-        ORDER BY barang.tanggal_masuk DESC, barang.nama_barang ASC"; // Urutkan dari yang terbaru masuk
+        ORDER BY barang.tanggal_masuk DESC, barang.nama_barang ASC";
 
 try {
     $stmt = $pdo->query($sql);
@@ -15,18 +15,6 @@ try {
     die("Ada kesalahan saat mengambil data: " . $e->getMessage());
 }
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Barang - Inventaris</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
-<body>
 
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -154,5 +142,4 @@ document.getElementById('tableSearch').addEventListener('keyup', function() {
     });
 });
 </script>
-</body>
-</html>
+<?php include '../../includes/footer.php'; ?>

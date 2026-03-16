@@ -20,10 +20,9 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2 class="fw-bold mb-1" style="color: #f374be;">Edit Barang</h2>
+        <h2 class="fw-bold mb-1" style="color: #000000;">Edit Barang</h2>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="../../index.php" class="text-decoration-none">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none">Data Barang</a></li>
                 <li class="breadcrumb-item active">Edit</li>
             </ol>
