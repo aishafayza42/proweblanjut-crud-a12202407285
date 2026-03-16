@@ -27,8 +27,8 @@ include '../../includes/header.php';
         </nav>
     </div>
     <a href="index.php" class="btn btn-outline-pink shadow-sm">
-            <i class="fas fa-arrow-left me-2"></i> Kembali
-        </a>
+        <i class="fas fa-arrow-left me-2"></i> Kembali
+    </a>
 </div>
 
     <div class="card card-custom border-0 shadow-sm">

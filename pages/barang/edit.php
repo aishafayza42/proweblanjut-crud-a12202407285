@@ -28,7 +28,7 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
             </ol>
         </nav>
     </div>
-    <a href="index.php" class="btn btn-outline-secondary shadow-sm">
+    <a href="index.php" class="btn btn-outline-pink shadow-sm">
         <i class="fas fa-arrow-left me-2"></i> Kembali
     </a>
 </div>
@@ -125,8 +125,8 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
 
                 <div class="col-12 mt-4 pt-3 border-top">
                     <div class="d-flex justify-content-end gap-2">
-                        <button type="submit" name="update" class="btn btn-primary px-5 shadow-sm rounded-pill">
-                            <i class="fas fa-save me-2"></i>Simpan Perubahan
+                        <button type="submit" name="simpan" class="btn btn-primary px-5 shadow-sm">
+                            <i class="fas fa-save me-2"></i> Simpan Barang
                         </button>
                     </div>
                 </div>
