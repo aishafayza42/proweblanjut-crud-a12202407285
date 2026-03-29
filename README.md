@@ -1,6 +1,6 @@
 # Sistem Manajemen Inventaris Sederhana
 
-Proyek ini dikembangkan sebagai pemenuhan tugas mata kuliah Manajemen Inventaris. Aplikasi ini dirancang untuk mengelola data stok barang secara digital dengan antarmuka yang modern, sistematis, dan responsif.
+Proyek ini dikembangkan sebagai pemenuhan tugas mata kuliah Pemrograman Web Lanjut. Aplikasi ini dirancang untuk mengelola data stok barang secara digital dengan antarmuka yang modern, sistematis, dan responsif.
 
 ## Fitur Utama
 - **Auto-Generate Kode**: Penomoran kode barang secara otomatis (Format: BRG001, BRG002, dst) untuk menjamin keunikan data.
