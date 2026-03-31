@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,6 +31,23 @@
             <div class="me-3 d-none d-md-block text-end">
                 <small class="text-muted d-block" style="font-size: 11px;">Hari ini</small>
                 <span class="fw-semibold small"><?= date('l, d M Y'); ?></span>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--primary-color);">
+                    <div class="bg-pink-light p-2 rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+                        <i class="fas fa-user-circle fa-lg"></i>
+                    </div>
+                    <span class="fw-bold small d-none d-sm-inline"><?= $_SESSION['nama']; ?></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="dropdownUser">
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item text-danger small fw-bold" href="../../logout.php">
+                            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,22 +1,18 @@
 <?php
 include 'config/koneksi.php';
-
-// --- 1. LOGIKA PROSES REGISTRASI ---
+ 
 if (isset($_POST['register'])) {
     $nama = $_POST['nama_lengkap'];
     $user = $_POST['username'];
     $pass = $_POST['password'];
-
-    // Enkripsi password (Sesuai kriteria RTM)
+ 
     $pass_hashed = password_hash($pass, PASSWORD_DEFAULT);
 
-    try {
-        // Prepared Statement untuk keamanan
+    try { 
         $sql = "INSERT INTO users (username, password, nama_lengkap) VALUES (?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user, $pass_hashed, $nama]);
-
-        // Redirect ke login jika berhasil
+ 
         header("Location: login.php?pesan=registrasi_berhasil");
         exit();
 
@@ -31,10 +27,21 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun - MyInventaris</title>
+    <title>Login - MyInventaris</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/manajemen-inventaris/assets/css/style.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif !important;
+        }
+        .card-custom {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body class="d-flex align-items-center justify-content-center" style="min-height: 100vh; padding: 0;">
     <div class="container">
