@@ -1,6 +1,10 @@
 <?php
 session_start();
-session_destroy(); // Menghapus semua data login
-header("Location: login.php"); // Balik ke pintu awal
+session_destroy();
+
+setcookie('id', '', time() - 3600, "/");
+setcookie('key', '', time() - 3600, "/");
+
+header("Location: login.php"); 
 exit();
 ?>

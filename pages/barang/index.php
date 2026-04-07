@@ -16,6 +16,14 @@ try {
 ?>
 
 <div class="container-fluid">
+    <div class="mb-4 pt-2">
+    <h2 class="text-dark">
+        <span class="fw-normal text-muted">Selamat datang kembali,</span> 
+        <span class="fw-bold"><?= $_SESSION['nama']; ?>! >⩊<</span>
+    </h2>
+    </div>
+</div>
+<div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2 class="fw-bold text-dark mb-1">Manajemen Inventaris</h2>
@@ -131,7 +139,6 @@ try {
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.getElementById('tableSearch').addEventListener('keyup', function() {
     let value = this.value.toLowerCase();

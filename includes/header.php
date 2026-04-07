@@ -17,6 +17,12 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
 
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm" style="background-color: white; border-bottom: 2px solid var(--primary-color);">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
@@ -24,26 +30,27 @@ if (session_status() === PHP_SESSION_NONE) {
                  style="width: 35px; height: 35px; background-color: var(--primary-color);">
                 <i class="fas fa-boxes"></i>
             </div>
-            <span class="logo-text fw-bold" style="color: var(--primary-color);">MyInventaris</span>
+            <div class="me-4">
+                <span class="logo-text fw-bold d-block" style="color: var(--primary-color); line-height: 1.5;">MyInventaris</span>
+                <small class="text-muted" style="font-size: 10px;"><?= date('l, d M Y'); ?></small>
+            </div>
         </div>
 
-        <div class="ms-auto d-flex align-items-center">
-            <div class="me-3 d-none d-md-block text-end">
-                <small class="text-muted d-block" style="font-size: 11px;">Hari ini</small>
-                <span class="fw-semibold small"><?= date('l, d M Y'); ?></span>
-            </div>
-
+        <div class="ms-auto">
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--primary-color);">
-                    <div class="bg-pink-light p-2 rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+                    <div class="bg-pink-light p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; border: 1px solid var(--primary-light);">
                         <i class="fas fa-user-circle fa-lg"></i>
                     </div>
-                    <span class="fw-bold small d-none d-sm-inline"><?= $_SESSION['nama']; ?></span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="dropdownUser">
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 p-2" aria-labelledby="dropdownUser" style="border-radius: 12px;">
+                    <li class="px-3 py-2">
+                        <small class="text-muted d-block">Login sebagai:</small>
+                        <span class="fw-bold text-dark"><?= $_SESSION['nama']; ?></span>
+                    </li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <a class="dropdown-item text-danger small fw-bold" href="../../logout.php">
+                        <a class="dropdown-item text-danger small fw-bold rounded-3" href="../../logout.php">
                             <i class="fas fa-sign-out-alt me-2"></i> Keluar
                         </a>
                     </li>

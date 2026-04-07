@@ -1,6 +1,12 @@
 <?php
+session_start();
 include 'config/koneksi.php';
  
+if (isset($_SESSION['login'])) {
+    header("Location: pages/barang/index.php");
+    exit();
+} 
+
 if (isset($_POST['register'])) {
     $nama = $_POST['nama_lengkap'];
     $user = $_POST['username'];
@@ -23,68 +29,62 @@ if (isset($_POST['register'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - MyInventaris</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Register - MyInventaris</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/manajemen-inventaris/assets/css/style.css">
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif !important;
-        }
-        .card-custom {
-            margin-top: 50px;
-        }
-    </style>
 </head>
-<body class="d-flex align-items-center justify-content-center" style="min-height: 100vh; padding: 0;">
-    <div class="container">
-        <div class="card card-custom mx-auto" style="max-width: 450px;">
-            <div class="card-body p-5">
-                <div class="text-center mb-4">
-                    <h3 class="fw-bold text-pink">Registrasi</h3>
-                    <p class="text-muted small">Buat akun untuk masuk ke sistem</p>
+
+<body>
+<div class="container-main container-register">
+    <div class="card-sliding">
+        
+        <div class="panel">
+            <div class="text-center mb-30">
+                <div class="icon-box bg-pink-light text-pink">
+                    <i class="fas fa-user-plus fa-2x"></i>
+                </div>
+                <h2 class="fw-bold m-0">Daftar Akun</h2>
+                <p class="small text-muted mt-1">Lengkapi data diri Anda</p>
+            </div>
+
+            <?php if(isset($error)): ?>
+                <div class="alert-error"><?= $error ?></div>
+            <?php endif; ?>
+
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" class="input-custom" placeholder="Masukkan nama lengkap" required>
                 </div>
 
-                <?php if(isset($error)): ?>
-                    <div class="alert alert-danger small p-2"><?= $error ?></div>
-                <?php endif; ?>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="input-custom" placeholder="Pilih username" required>
+                </div>
 
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">NAMA LENGKAP</label>
-                        <input type="text" name="nama_lengkap" class="form-control" placeholder="Masukkan nama Anda" required>
-                    </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="input-custom" placeholder="Buat password" required>
+                </div>
 
-                    <div class="mb-3">
-                        <label class="form-label small fw-bold">USERNAME</label>
-                        <input type="text" name="username" class="form-control" placeholder="Pilih username" required>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label small fw-bold">PASSWORD</label>
-                        <input type="password" name="password" class="form-control" placeholder="Buat password" required>
-                    </div>
-
-                    <button type="submit" name="register" class="btn btn-primary w-100 fw-bold shadow-sm">
-                        DAFTAR SEKARANG
-                    </button>
-                    
-                    <div class="text-center mt-4">
-                        <p class="small text-muted">
-                            Sudah punya akun? 
-                            <a href="login.php" class="text-pink text-decoration-none fw-bold">Login di sini</a>
-                        </p>
-                    </div>
-                </form>
-            </div>
+                <button type="submit" name="register" class="btn-primary w-full fw-bold">
+                    DAFTAR SEKARANG
+                </button>
+            </form>
         </div>
+
+        <div class="panel panel-side">
+            <h1 class="text-white">Welcome Back!</h1>
+            <p class="text-white">Sudah memiliki akun? Silakan login untuk kembali mengelola inventaris Anda.</p>
+            <a href="login.php" class="btn-outline-white">LOGIN DI SINI</a>
+        </div>
+
     </div>
+</div>
+
 </body>
 </html>
