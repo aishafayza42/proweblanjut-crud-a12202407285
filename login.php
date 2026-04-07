@@ -34,8 +34,8 @@ if (isset($_POST['login'])) {
         $_SESSION['nama'] = $data_user['nama_lengkap']; 
 
         if (isset($_POST['remember'])) {
-            setcookie('id', $data_user['id'], time() + 15, '/');
-            setcookie('key', hash('sha256', $data_user['username']), time() + 15, '/');
+            setcookie('id', $data_user['id'], time() + 30, '/');
+            setcookie('key', hash('sha256', $data_user['username']), time() + 30, '/');
         }
 
         header("Location: pages/barang/index.php");
