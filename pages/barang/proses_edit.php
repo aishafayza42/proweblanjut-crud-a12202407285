@@ -9,21 +9,24 @@ if (isset($_POST['update'])) {
     $stok        = $_POST['stok'];
     $id_kat      = $_POST['id_kategori'];
     $id_sat      = $_POST['id_satuan'];
-
+ 
     $foto_name = $_FILES['foto']['name'];
     $foto_tmp  = $_FILES['foto']['tmp_name'];
+    $foto_size = $_FILES['foto']['size']; 
+    $foto_err  = $_FILES['foto']['error']; 
 
     $stmt_old = $pdo->prepare("SELECT foto FROM barang WHERE kode_barang = ?");
     $stmt_old->execute([$kode_barang]);
     $row_old = $stmt_old->fetch();
     $foto_lama = $row_old['foto'];
 
-    if (!empty($foto_name)) {
+if (!empty($foto_name)) {
+    if ($foto_size < 2000000) { 
+        
         $ekstensi = strtolower(pathinfo($foto_name, PATHINFO_EXTENSION));
         $allowed  = ['jpg', 'jpeg', 'png'];
 
         if (in_array($ekstensi, $allowed)) {
-
             $fotobaru = date('YmdHis') . '_' . $kode_barang . '.' . $ekstensi;
             $path = "../../assets/img/barang/" . $fotobaru;
 
@@ -35,9 +38,13 @@ if (isset($_POST['update'])) {
         } else {
             die("Format file tidak didukung. <a href='edit.php?id=$kode_barang'>Kembali</a>");
         }
+
     } else {
-        $fotobaru = $foto_lama;
+        die("Ukuran file terlalu besar (Maksimal 2MB). <a href='edit.php?id=$kode_barang'>Kembali</a>");
     }
+} else {
+    $fotobaru = $foto_lama;
+}
 
     try {
         $sql = "UPDATE barang SET 

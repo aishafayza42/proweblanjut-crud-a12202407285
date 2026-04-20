@@ -13,8 +13,13 @@ if (!$b) {
     exit; 
 }
 
-$kategori = $pdo->query("SELECT * FROM kategori ORDER BY nama_kategori")->fetchAll();
-$satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
+$stmt_kat = $pdo->prepare("SELECT * FROM kategori ORDER BY nama_kategori");
+$stmt_kat->execute(); 
+$kategori = $stmt_kat->fetchAll();
+
+$stmt_sat = $pdo->prepare("SELECT * FROM satuan ORDER BY nama_satuan");
+$stmt_sat->execute(); 
+$satuan = $stmt_sat->fetchAll();
 
 ?>
 
@@ -55,26 +60,6 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
                 <div class="col-md-6">
                     <label class="form-label fw-semibold text-muted small uppercase">Nama Barang</label>
                     <input type="text" name="nama_barang" class="form-control shadow-none" value="<?= htmlspecialchars($b['nama_barang']) ?>" required>
-                </div>
-
-                <div class="col-md-12">
-                    <label class="form-label fw-semibold text-muted small uppercase">Foto Barang</label>
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <?php if (!empty($b['foto'])): ?>
-                                <img src="../../assets/img/barang/<?= $b['foto'] ?>" id="img-preview" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 2px solid #f374be;">
-                            <?php else: ?>
-                                <div id="no-photo-text" class="bg-light d-flex align-items-center justify-content-center text-muted" style="width: 80px; height: 80px; border-radius: 10px; border: 1px dashed #ccc;">
-                                    <small style="font-size: 10px;">No Photo</small>
-                                </div>
-                                <img id="img-preview" class="img-thumbnail" style="display:none; width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 2px solid #f374be;">
-                            <?php endif; ?>
-                        </div>
-                        <div class="col">
-                            <input type="file" name="foto" class="form-control shadow-none" accept="image/*" onchange="previewImage(this)">
-                            <div class="form-text small text-pink">* Pilih file jika ingin mengganti foto.</div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="col-md-6">
@@ -120,6 +105,26 @@ $satuan = $pdo->query("SELECT * FROM satuan ORDER BY nama_satuan")->fetchAll();
                     <div class="input-group">
                         <input type="number" name="stok" class="form-control" value="<?= $b['stok'] ?>" required>
                         <span class="input-group-text bg-light">Unit</span>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <label class="form-label fw-semibold text-muted small uppercase">Foto Barang</label>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <?php if (!empty($b['foto'])): ?>
+                                <img src="../../assets/img/barang/<?= $b['foto'] ?>" id="img-preview" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 2px solid #f374be;">
+                            <?php else: ?>
+                                <div id="no-photo-text" class="bg-light d-flex align-items-center justify-content-center text-muted" style="width: 80px; height: 80px; border-radius: 10px; border: 1px dashed #ccc;">
+                                    <small style="font-size: 10px;">No Photo</small>
+                                </div>
+                                <img id="img-preview" class="img-thumbnail" style="display:none; width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 2px solid #f374be;">
+                            <?php endif; ?>
+                        </div>
+                        <div class="col">
+                            <input type="file" name="foto" class="form-control shadow-none" accept="image/*" onchange="previewImage(this)">
+                            <div class="form-text small text-pink">* Pilih file jika ingin mengganti foto.</div>
+                        </div>
                     </div>
                 </div>
 
