@@ -133,7 +133,7 @@ include '../../includes/header.php';
 
                     <div class="col-12 mt-4 pt-3 border-top">
                         <div class="d-flex justify-content-end gap-2">
-                            <button type="reset" class="btn btn-light border px-4">
+                            <button type="reset" class="btn btn-light border px-4" onclick="resetForm()">
                                 <i class="fas fa-undo me-2"></i> Reset
                             </button>
                             <button type="submit" name="simpan" class="btn btn-primary px-5 shadow-sm">
@@ -166,6 +166,15 @@ function previewImage(input) {
     } else {
         preview.style.display = 'none';
     }
+}
+
+function resetForm() {
+    const preview = document.getElementById('img-preview');
+    preview.src = '';
+    preview.style.display = 'none';
+
+    document.getElementById('kat_baru_input').style.display = 'none';
+    document.getElementById('sat_baru_input').style.display = 'none';
 }
 </script>
 
