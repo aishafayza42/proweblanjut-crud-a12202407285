@@ -1,0 +1,23 @@
+# === 1. Mengabaikan Foto Produk Hasil Upload Testing (Trik Industri) ===
+# Mengabaikan semua file di dalam folder img, tapi folder img-nya sendiri tidak hilang
+public/assets/img/*
+# Pengecualian: file placeholder/bawaan ini jangan di-ignore agar folder img tetap terunggah ke GitHub
+!public/assets/img/no-image.png
+
+# === 2. File Sampah Otomatis Sistem Operasi Windows ===
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# === 3. File Pengaturan Text Editor / IDE (VS Code) ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# === 4. File Logs / Laporan Error Otomatis ===
+*.log
+error_log
