@@ -21,3 +21,7 @@ $RECYCLE.BIN/
 # === 4. File Logs / Laporan Error Otomatis ===
 *.log
 error_log
+
+# === 5. File Database / Backup Lokal ===
+db_inventaris.sql
+*.sql
